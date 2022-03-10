@@ -1,24 +1,35 @@
-# README
+# Personicle application - Ruby on Rails
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Installation
 
-Things you may want to cover:
+First, Pull the code, install gems and create database.
 
-* Ruby version
+``` bundle install ```
 
-* System dependencies
+``` rake db:create ```
 
-* Configuration
+Next, Migrate Database
 
-* Database creation
+``` rake db:migrate ```
 
-* Database initialization
+``` cd config ```
+``` touch application.yml```
+``` cd .. ```
+## Add Okta configuration in application.yml
 
-* How to run the test suite
+```
+OKTA_CLIENT_ID: "YOUR-CLIENT-ID"
+OKTA_CLIENT_SECRET: "YOUR-CLIENT-SECRET"
+OKTA_ORG: "YOUR-OKTA-ORG"
+OKTA_DOMAIN: "okta"
+OKTA_URL: "YOUR-OKTA-ORG-URL"
+OKTA_ISSUER: "YOUR-OKTA-ISSUER-URL"
+OKTA_AUTH_SERVER_ID: "YOUR-AUTH-SERVER-ID"
+OKTA_REDIRECT_URI: "http://localhost:3000/users/auth/oktaoauth/callback"
 
-* Services (job queues, cache servers, search engines, etc.)
+```
 
-* Deployment instructions
+## Start Rails Server
+``` rails s ```
 
-* ...
+``` localhost: 3000 ```
