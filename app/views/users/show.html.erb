@@ -1,0 +1,7 @@
+<h1>Users#show</h1>
+<% if session[:oktastate] %>
+<h2>Welcome to personicle, <%= session[:oktastate]["info"]["name"] %></h2>
+<%= session[:oktastate].to_json %>  
+ <% else %>
+ <h2>Hello, please login to explore personicle!</h2>
+<% end %>

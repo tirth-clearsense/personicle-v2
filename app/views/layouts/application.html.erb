@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Personicle</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+  <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
+    <% if !session[:oktastate] %>
+      <%= link_to "Sign In or Sign Up", user_oktaoauth_omniauth_authorize_path %>
+    <% else %>
+      <header>
+        <%= link_to "Personicle Dashboard", users_path(), class: "item"%>
+        <%# <% puts session[:oktastate]["ui"] %>
+        <%= link_to session[:oktastate]["info"]["name"], user_path(session[:oktastate]["uid"]), class: "item" %>
+       <%= link_to "logout", ENV['OKTA_URL'] + "/login/signout?fromURI=" + request.base_url + "/logout", class: "item" %>
+      </header>
+    <% end %>
+    <%= yield %>
+  </body>
+</html>
