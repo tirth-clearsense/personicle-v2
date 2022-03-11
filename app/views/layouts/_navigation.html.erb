@@ -14,7 +14,7 @@
 
 <% if session[:oktastate] %>
 
-    <li><%= link_to "Log out", ENV['OKTA_URL'] + "/login/signout?fromURI=" + request.base_url + "/logout" %></li>
+
 
     <li class="nav-item dropdown">
 
@@ -25,7 +25,7 @@
 
          <li><a href="#">Account settings</a></li>
          <li><%= link_to "Your connections" ,  user_path(session[:oktastate]["uid"]) %></li>
-
+        <li><%= link_to "Log out", ENV['OKTA_URL'] + "/login/signout?fromURI=" + request.base_url + "/logout" %></li>
     </ul>
 
     </li>
