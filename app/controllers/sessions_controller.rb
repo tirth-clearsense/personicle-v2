@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
   
     def destroy
       session[:oktastate] = nil
-      redirect_to root_path
+      redirect_to "/login"
       # redirect_to ENV['OKTA_URL'] + "/login/signout?fromURI=" + request.base_url + "/logout"
     end
   end
