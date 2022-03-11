@@ -1,0 +1,44 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+
+    <%= link_to "Personicle" , root_path, class: "navbar-brand", id:"logo" %>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+         
+      </ul>
+      
+     <ul class="nav navbar-nav navbar-right">
+
+<% if session[:oktastate] %>
+
+    <li><%= link_to "Log out", ENV['OKTA_URL'] + "/login/signout?fromURI=" + request.base_url + "/logout" %></li>
+
+    <li class="nav-item dropdown">
+
+    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" id="navbarDropdown"  role="button" data-bs-toggle="dropdown"aria-expanded="false">Your Profile
+    </a>
+
+    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+         <li><a href="#">Account settings</a></li>
+         <li><%= link_to "Your connections" ,  user_path(session[:oktastate]["uid"]) %></li>
+
+    </ul>
+
+    </li>
+
+<% else %>
+
+<li>  <%= link_to "Login", user_oktaoauth_omniauth_authorize_path %></li>
+
+<% end %>
+
+</ul>
+
+
+    </div>
+  </div>
+</nav>

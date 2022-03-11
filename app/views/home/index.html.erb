@@ -1,2 +1,7 @@
-<h1>Personicle</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<div align="center">
+    <% if session[:oktastate] %>
+        <h3> Welcome to personicle, <%= session[:oktastate]["info"]["name"]%>! </h3>
+    <% else %>
+        <h3> Hello, please sign in to access the personicle! </h3>
+    <% end %>
+</div>
